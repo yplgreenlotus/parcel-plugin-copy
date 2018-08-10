@@ -2,9 +2,11 @@ const fs = require('fs')
 const path = require('path')
 var recursiveCopy = require('recursive-copy')
 
-function copy (bundler) {
+function copy(bundler) {
   bundler.on('bundled', async bundle => {
-    let url = path.join(__dirname, '../../', './package.json')
+    let relative = '../../'
+
+    let url = path.join(__dirname, relative, './package.json')
 
     let pkg = {
       staticPath: {
@@ -19,31 +21,31 @@ function copy (bundler) {
       console.error('not found package.json')
     }
 
+    let sourceArray = []
+
+    let targetArray = []
+
     const source = pkg['staticPath'].source
 
     const target = pkg['staticPath'].target
 
-    const sourceArray = []
-
-    const targetArray = []
-
     if (Array.isArray(source)) {
       for (let dir of source) {
-        sourceArray.push(path.join(__dirname, '../../', dir))
+        sourceArray.push(path.join(__dirname, relative, dir))
       }
     } else {
       if (source && typeof source === 'string') {
-        sourceArray.push(path.join(__dirname, '../../', source))
+        sourceArray.push(path.join(__dirname, relative, source))
       }
     }
 
     if (Array.isArray(target)) {
       for (let dir of target) {
-        targetArray.push(path.join(__dirname, '../../', dir))
+        targetArray.push(path.join(__dirname, relative, dir))
       }
     } else {
       if (target && typeof target === 'string') {
-        targetArray.push(path.join(__dirname, '../../', target))
+        targetArray.push(path.join(__dirname, relative, target))
       }
     }
 
@@ -57,9 +59,7 @@ function copy (bundler) {
           console.error(error)
         }
       } else {
-        console.error(
-          `No static assets directory with path "${sourceArray[i]}" found`
-        )
+        console.error(`"${sourceArray[i]}" static directory not found`)
       }
     }
   })

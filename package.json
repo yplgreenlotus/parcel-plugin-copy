@@ -30,6 +30,13 @@
     "url": "https://github.com/yplgreenlotus/parcel-plugin-copy/issues"
   },
   "homepage": "https://github.com/yplgreenlotus/parcel-plugin-copy#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "staticPath": {
+    "source": "/demo/mock",
+    "target": "/dist/mock"
+  },
   "standard": {
     "env": {
       "jest": true

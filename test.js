@@ -1,26 +1,22 @@
 const fs = require('fs')
 const path = require('path')
-
 const Bundler = require('parcel-bundler')
+const copy = require('./index')
 
-const assetCopier = require('./index')
-
-test('should copy assets', async () => {
-  let bundler = new Bundler('./test-files/index.html', {
+test('should copy static dir', async () => {
+  let bundler = new Bundler('./demo/index.html', {
     outDir: path.join(__dirname, 'dist'),
     watch: false,
     cache: false,
     hmr: false,
     logLevel: 0
   })
-  assetCopier(bundler)
+  copy(bundler)
   await bundler.bundle()
 
-  // HACK: - No clue what async op is causing me to do this
   setTimeout(() => {
-    const files = fs.readdirSync('dist')
+    const files = fs.readdirSync('dist/mock')
     console.log(files)
-    expect(files.includes('test.jpg')).toBeTruthy()
-    expect(files.includes('test.txt')).toBeTruthy()
-  }, 0)
+    expect(files.includes('config.json')).toBeTruthy()
+  }, 320)
 })
