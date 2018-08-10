@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-copy",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "it is parcel plugin that copy static dir to target dir ",
   "main": "index.js",
   "dependencies": {
@@ -34,8 +34,8 @@
     "testEnvironment": "node"
   },
   "staticPath": {
-    "source": "/demo/mock",
-    "target": "/dist/mock"
+    "source": "/source/mock",
+    "target": "/target/mock"
   },
   "standard": {
     "env": {

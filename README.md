@@ -23,8 +23,8 @@ Add a `staticPath` property to your `package.json`. See [package.json](package.j
 
 ```json
   staticPath: {
-    "source": "/source/static/dir",
-    "target": "/target/static/dir"
+    "source": "/source/dir",
+    "target": "/target/dir"
   }
 ```
 
@@ -32,8 +32,8 @@ Add a `staticPath` property to your `package.json`. See [package.json](package.j
 
 ```json
   staticPath: {
-    "source": "['/source/static/dir']",
-    "target": "['/source/static/dir']"
+    "source": "['/source/dir','/source/static']",
+    "target": "['/target/dir','/target/static']"
   },
 ```
 
