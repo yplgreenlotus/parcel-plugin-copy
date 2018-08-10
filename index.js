@@ -4,6 +4,10 @@ var recursiveCopy = require('recursive-copy')
 
 function copy(bundler) {
   bundler.on('bundled', async bundle => {
+    // parcel-plugin-copy/
+    // let relative = './'
+
+    // node-modules/parcel-plugin-copy/
     let relative = '../../'
 
     let url = path.join(__dirname, relative, './package.json')
