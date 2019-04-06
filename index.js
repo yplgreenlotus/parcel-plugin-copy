@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 var recursiveCopy = require('recursive-copy')
+const mkdirp = require('mkdirp')
 
 function copy(bundler) {
   bundler.on('bundled', async bundle => {
@@ -55,6 +56,9 @@ function copy(bundler) {
 
     for (let i = 0; i < sourceArray.length; i++) {
       if (fs.existsSync(sourceArray[i])) {
+        if (!fs.existsSync(targetArray[i])) {
+          mkdirp.sync(targetArray[i])
+        }
         try {
           await recursiveCopy(sourceArray[i], targetArray[i], {
             overwrite: true

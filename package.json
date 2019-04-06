@@ -4,6 +4,7 @@
   "description": "it is parcel plugin that copy static dir to target dir ",
   "main": "index.js",
   "dependencies": {
+    "mkdirp": "^0.5.1",
     "recursive-copy": "^2.0.9"
   },
   "devDependencies": {
