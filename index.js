@@ -30,9 +30,17 @@ function copy(bundler) {
 
     let targetArray = []
 
-    const source = pkg['staticPath'].source
+    let source = pkg["staticPath"].source
+    try {
+      // In case of array we need to parse the string
+      source = JSON.parse(source)
+    } catch (err) {}
 
-    const target = pkg['staticPath'].target
+    let target = pkg["staticPath"].target
+    try {
+      // In case of array we need to parse the string
+      target = JSON.parse(target)
+    } catch (err) {}
 
     if (Array.isArray(source)) {
       for (let dir of source) {
