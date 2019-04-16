@@ -22,7 +22,7 @@ $ yarn add --dev parcel-plugin-copy
 Add a `staticPath` property to your `package.json`. See [package.json](package.json) for example or as follows:
 
 ```json
-  staticPath: {
+  "staticPath": {
     "source": "/source/dir",
     "target": "/target/dir"
   }
@@ -31,7 +31,7 @@ Add a `staticPath` property to your `package.json`. See [package.json](package.j
 # OR
 
 ```json
-  staticPath: {
+  "staticPath": {
     "source": "['/source/dir','/source/static']",
     "target": "['/target/dir','/target/static']"
   },
