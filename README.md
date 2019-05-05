@@ -12,7 +12,7 @@
 This project uses [node](https://nodejs.org) and [npm](https://www.npmjs.com).
 
 ```sh
-$ npm install --dev-save parcel-plugin-copy
+$ npm install --save-dev parcel-plugin-copy
 $ # OR
 $ yarn add --dev parcel-plugin-copy
 ```
