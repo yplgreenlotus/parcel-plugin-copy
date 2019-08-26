@@ -16,7 +16,8 @@ function copy(bundler) {
     let pkg = {
       staticPath: {
         source: '',
-        target: ''
+        target: '',
+        typeFiles: ''
       }
     }
 
@@ -29,7 +30,11 @@ function copy(bundler) {
     let sourceArray = []
 
     let targetArray = []
+    
+    let typeArray = []
 
+    const typeFiles = pkg['staticPath'].typeFiles
+     
     let source = pkg["staticPath"].source
     try {
       // In case of array we need to parse the string
@@ -62,6 +67,12 @@ function copy(bundler) {
       }
     }
 
+    if (typeFiles && typeof typeFiles === 'string') {
+      typeArray = typeFiles.split(",")
+    } else {
+      typeArray = ['*.*']
+    }
+    
     for (let i = 0; i < sourceArray.length; i++) {
       if (fs.existsSync(sourceArray[i])) {
         if (!fs.existsSync(targetArray[i])) {
@@ -69,7 +80,8 @@ function copy(bundler) {
         }
         try {
           await recursiveCopy(sourceArray[i], targetArray[i], {
-            overwrite: true
+            overwrite: true,
+            filter: typeArray
           })
         } catch (error) {
           console.error(error)
