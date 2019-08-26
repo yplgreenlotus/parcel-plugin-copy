@@ -24,7 +24,8 @@ Add a `staticPath` property to your `package.json`. See [package.json](package.j
 ```json
   staticPath: {
     "source": "/source/dir",
-    "target": "/target/dir"
+    "target": "/target/dir",
+    "typeFiles": "styles.css.map"
   }
 ```
 
@@ -33,7 +34,8 @@ Add a `staticPath` property to your `package.json`. See [package.json](package.j
 ```json
   staticPath: {
     "source": "['/source/dir','/source/static']",
-    "target": "['/target/dir','/target/static']"
+    "target": "['/target/dir','/target/static']",
+    "typeFiles": "styles.css.map, *.css, *.js" //or you can completely remove the parameter (typeFiles), then all files from the specified directories will be transferred
   },
 ```
 
